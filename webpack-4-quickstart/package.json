@@ -1,0 +1,20 @@
+{
+  "name": "webpack-4-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development ./test/from/js/index.js --output ./test/to/main.js",
+    "build": "webpack --mode production ./test/from/js/index.js --output ./test/to/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^4.6.0"
+  }
+}
