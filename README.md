@@ -1,3 +1,5 @@
+# wepback 4.0
+
 ## 零配置快速构建
 
 > 创建文件夹
@@ -84,7 +86,10 @@ webpack的零配置优点显著，但如何自定义导入导出文件目录
 
 > 配置
 
-新建 .babelrc文件名，并且在文件中添加
+webpack提供两种配置babel的方式:
+
+1. 使用babel的loader和配置文件
+新建 **.babelrc**文件名，并且在文件中添加
 
 ```
 {
@@ -93,9 +98,104 @@ webpack的零配置优点显著，但如何自定义导入导出文件目录
     ]
 }
 ```
+使用webpack.config.js
 
-webpack提供两种配置babel的方式:
-1. 使用配置文件
-2. 使用--module-bind在npm脚本中
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+```
+
+2. 配置package.json和配置文件
+使用**--module-bind**在**npm**脚本中
+
+```
+"scripts": {
+    "dev": "webpack --mode development --module-bind js=babel-loader",
+    "build": "webpack --mode production --module-bind js=babel-loader"
+  }
+```
+
+## 配置react
+
+> 安装react
+
+`npm i react react-dom --save-dev`
+
+> 安装babel预处理
+
+`npm i babel-preset-react --save-dev`
+
+> 配置**.babelrc**
+
+```
+{
+  "presets": ["env", "react"]
+}
+```
+> 配置webpack.json
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+```
+
+> 案例
+
+1.新建React component在./src/App.js
+
+```
+import React from "react";
+import ReactDOM from "react-dom";
+const App = () => {
+  return (
+    <div>
+      <p>React here!</p>
+    </div>
+  );
+};
+export default App;
+ReactDOM.render(<App />, document.getElementById("app"));
+```
+2.导入react组件，在./src/index.js中
+`import App from "./App";`
+3.构建
+`npm run build`
+4.新建html，引入压缩代码
+
+```
+<body>
+    <div id="app"></div>
+    <script src="./dist/main.js"></script>
+</body>
+```
+
+
+
+
+
+
+
 
 

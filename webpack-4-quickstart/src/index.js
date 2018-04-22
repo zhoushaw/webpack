@@ -1,1 +1,1 @@
-console.log('帅气的姿势运行');
+import App from './App.js'

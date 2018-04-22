@@ -76,9 +76,10 @@
   !*** ./test/from/js/index.js ***!
   \*******************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("console.log('hello world');\n\n//# sourceURL=webpack:///./test/from/js/index.js?");
+"use strict";
+eval("\n\nvar arr = [1, 2, 3];\nvar iAmJavascriptES6 = function iAmJavascriptES6() {\n  var _console;\n\n  return (_console = console).log.apply(_console, arr);\n};\nwindow.iAmJavascriptES6 = iAmJavascriptES6;\n\n//# sourceURL=webpack:///./test/from/js/index.js?");
 
 /***/ })
 
