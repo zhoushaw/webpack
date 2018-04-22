@@ -191,6 +191,133 @@ ReactDOM.render(<App />, document.getElementById("app"));
 </body>
 ```
 
+## HTML plugin
+
+> 安装依赖
+
+`npm i html-webpack-plugin html-loader --save-dev`
+
+> 配置webpack.config.js
+
+
+```
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    })
+  ]
+};
+```
+
+## 提取css
+
+> 安装依赖
+
+`npm i mini-css-extract-plugin css-loader --save-dev`
+
+> 新建css文件
+
+
+```
+/* CREATE THIS FILE IN ./src/main.css */
+body {
+    line-height: 2;
+}
+```
+> 配置webpack.config.js和plugin
+
+
+```
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+  ]
+};
+```
+> 导入css
+
+
+```
+// PATH OF THIS FILE: ./src/index.js
+import style from "./main.css";
+```
+
+## 热更新
+
+> 概念
+
+在项目开发过程中，修改代码后，需要手动刷新项目十分不便。通过配置热更新达到自动更新项目的目的并且启动项目自动打开浏览器，修改代码后会产生局部更新，项目会自动重新构建
+
+> 安装依赖
+
+`npm i webpack-dev-server --save-dev`
+
+> 修改webpack.config.js配置
+
+```
+"scripts": {
+  "start": "webpack-dev-server --mode development --open",
+  "build": "webpack --mode production"
+}
+```
+
+
 
 
 
