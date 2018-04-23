@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "open-browser-webpack-plugin": "0.0.5",
+    "webpack": "^4.6.0",
+    "webpack-dev-server": "^3.1.3"
+  }
+}

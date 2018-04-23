@@ -1,0 +1,14 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --open",
+    "build": "NODE_ENV=production webpack -p"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
