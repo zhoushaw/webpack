@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/zhoushaw/webpack/issues"
   },
-  "homepage": "https://github.com/zhoushaw/webpack#readme"
+  "homepage": "https://github.com/zhoushaw/webpack#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.11",
+    "mini-css-extract-plugin": "^0.4.0"
+  }
 }

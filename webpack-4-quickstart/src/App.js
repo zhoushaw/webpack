@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 const App = () => {
     return (
         <div>
-        <p>React here!</p>
-    </div>
+            <p>React here.</p>
+            <p>React here.</p>
+        </div>
 );
 };
 export default App;

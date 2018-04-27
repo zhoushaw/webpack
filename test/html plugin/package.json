@@ -1,0 +1,11 @@
+{
+  "name": "html plugin",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "webpack --mode development ",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "license": "MIT",
+  "devDependencies": {}
+}
